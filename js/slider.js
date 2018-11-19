@@ -7,11 +7,11 @@ export class Slider {
 			return document.querySelector(elem);
 		}
 
-		function hasClass(el, className) {
+		const hasClass = (el, className) => {
 			return el.classList ? el.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
 		}
 
-		function addClass(el, className) {
+		const addClass = (el, className) => {
 			if (el.classList) {
 				el.classList.add(className);
 			} else {
@@ -19,7 +19,7 @@ export class Slider {
 			}
 		}
 
-		function removeClass(el, className) {
+		const removeClass = (el, className) => {
 			if (el.classList) {
 				el.classList.remove(className);
 			} else {
@@ -27,7 +27,7 @@ export class Slider {
 			}
 		}
 
-		function $extendObj(_def, addons) {
+		const $extendObj = (_def, addons) => {
 			if (typeof addons !== "undefined") {
 				for (let prop in _def) {
 					if (addons[prop] != undefined) {
@@ -37,7 +37,7 @@ export class Slider {
 			}
 		}
 
-		const slider_plugin = (function () {
+		const slider_plugin = ( () => {
 
 			const juicey_slider = function (settings) {
 				const _ = this;
@@ -276,7 +276,7 @@ export class Slider {
 				}
 
 				if (_.def.arrowRight != '') {
-					_.def.arrowRight.addEventListener('click', function () {
+					_.def.arrowRight.addEventListener('click', () => {
 						if (!hasClass(_.def.target, 'isAnimating')) {
 							if (_.curSlide == _.totalSlides) {
 								_.curSlide = 0;
